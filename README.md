@@ -5,7 +5,7 @@
 conda create -n XDiffusion python=3.9
 conda activate XDiffusion
 cd XDiffusion/scripts
-
+```
 
 We follow the installation instructions from [Zero-123](https://github.com/cvlab-columbia/zero123)
 
