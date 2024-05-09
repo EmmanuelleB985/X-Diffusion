@@ -1,4 +1,5 @@
 # X-Diffusion: Generating Detailed 3D MRI Volumes From a Single Image Using Cross-Sectional Diffusion Models
+[![ArXiv](https://img.shields.io/badge/ArXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2404.19604)
 
 ##  Usage
 ```
@@ -59,3 +60,15 @@ https://github.com/rwindsor1/UKBiobankDXAMRIPreprocessing
 
 ##  Acknowledgement
 This repository is based on [Zero-123](https://github.com/cvlab-columbia/zero123),[Stable Diffusion](https://github.com/CompVis/stable-diffusion). We would like to thank the authors of the abovementioned work for publicly releasing their code. 
+
+**BibTeX**
+```bibtex
+@misc{bourigault2024xdiffusion,
+      title={X-Diffusion: Generating Detailed 3D MRI Volumes From a Single Image Using Cross-Sectional Diffusion Models}, 
+      author={Emmanuelle Bourigault and Abdullah Hamdi and Amir Jamaludin},
+      year={2024},
+      eprint={2404.19604},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV}
+}
+```
