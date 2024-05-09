@@ -1,5 +1,6 @@
 # X-Diffusion: Generating Detailed 3D MRI Volumes From a Single Image Using Cross-Sectional Diffusion Models
 [![ArXiv](https://img.shields.io/badge/ArXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2404.19604)
+[![ProjectPage](https://img.shields.io/badge/Project_Page-blue)](https://emmanuelleb985.github.io/XDiffusion/)
 
 ##  Usage
 ```
