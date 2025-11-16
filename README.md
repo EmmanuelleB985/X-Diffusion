@@ -42,12 +42,19 @@ python main.py \
     --finetune_from Zero123/300000.ckpt 
 ```
 
+Note that this uses around 30 GB of VRAM.
+
 For inference:
 ```
 python inference.py
 ```
 
-Note that this uses around 30 GB of VRAM.
+To test with pretrained model checkpoint, extract first and run:
+
+```
+tar -xzvf ckpt.tar.gz
+python inference.py
+```
 
 
 ### Dataset (BRATS and UKBiobank)
