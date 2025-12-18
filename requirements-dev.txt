@@ -1,0 +1,57 @@
+# Testing
+pytest>=7.3.0
+pytest-cov>=4.1.0
+pytest-xdist>=3.3.0  # Parallel test execution
+pytest-mock>=3.11.0
+pytest-timeout>=2.1.0
+hypothesis>=6.75.0  # Property-based testing
+
+# Code Quality & Linting
+black>=23.3.0
+isort>=5.12.0
+flake8>=6.0.0
+flake8-docstrings>=1.7.0
+flake8-annotations>=3.0.0
+flake8-bugbear>=23.5.0
+mypy>=1.3.0
+pylint>=2.17.0
+autopep8>=2.0.0
+
+# Type checking stubs
+types-PyYAML>=6.0.0
+types-requests>=2.31.0
+types-tqdm>=4.65.0
+torch-stubs>=1.0.0
+
+# Documentation
+sphinx>=7.0.0
+sphinx-rtd-theme>=1.2.0
+sphinx-autodoc-typehints>=1.23.0
+interrogate>=1.5.0  # Docstring coverage
+
+# Security
+bandit>=1.7.0
+safety>=2.3.0
+
+# Code formatting and analysis
+pre-commit>=3.3.0
+radon>=6.0.0  # Code complexity
+vulture>=2.7  # Dead code finder
+
+# Profiling & Debugging
+memory-profiler>=0.61.0
+line-profiler>=4.0.0
+ipdb>=0.13.0
+pudb>=2022.1.0
+
+# Development utilities
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+notebook>=6.5.0
+ipywidgets>=8.0.0
+
+# Build tools
+build>=0.10.0
+twine>=4.0.0
+setuptools>=67.0.0
+wheel>=0.40.0

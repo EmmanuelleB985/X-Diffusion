@@ -1,3 +1,18 @@
+
+"""
+Main training script for X-Diffusion model.
+
+This module implements the main training pipeline for generating detailed 3D MRI 
+volumes from single images using cross-sectional diffusion models.
+
+Example:
+    To train the model::
+
+        $ python main.py -t --base configs/sd-brats-finetune-c_concat-256.yaml \
+                --gpus 0 --scale_lr False --num_nodes 1 --seed 42 \
+                --check_val_every_n_epoch 10 --finetune_from Zero123/300000.ckpt
+
+"""
 import argparse, os, sys, datetime, glob, importlib, csv
 import numpy as np
 import time

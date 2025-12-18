@@ -1,3 +1,27 @@
+"""
+Inference module for X-Diffusion model.
+
+This module provides functionality for generating 3D MRI volumes from single
+2D images using a trained X-Diffusion model. It includes utilities for
+loading models, preprocessing inputs, and saving generated volumes.
+
+Example:
+    Basic inference::
+
+        $ python inference.py --model_path checkpoints/best_model.ckpt \
+                --input_image path/to/image.png \
+                --output_dir results/
+
+    Batch inference::
+
+        $ python inference.py --model_path checkpoints/best_model.ckpt \
+                --input_dir data/test_images/ \
+                --output_dir results/ \
+                --batch_size 4
+
+"""
+
+
 from contextlib import nullcontext
 import numpy as np
 import gc
