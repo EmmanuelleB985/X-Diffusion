@@ -73,7 +73,7 @@ pre-commit install
 # Zero-123 checkpoint
 wget https://cv.cs.columbia.edu/zero123/assets/300000.ckpt -P Zero123/
 
-# X-Diffusion checkpoint (if available)
+# X-Diffusion checkpoint 
 tar -xzvf ckpt.tar.gz
 ```
 
