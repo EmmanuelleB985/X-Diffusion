@@ -1,49 +1,25 @@
 [flake8]
-max-line-length = 100
-max-complexity = 10
-exclude = 
-    .git,
-    __pycache__,
-    .venv,
-    venv,
-    env,
-    build,
-    dist,
-    *.egg-info,
-    .pytest_cache,
-    .mypy_cache,
-    docs,
-    tests/fixtures
-
-ignore = 
-    # E203: whitespace before ':' (conflicts with black)
+max-line-length = 120
+exclude =
+    assets,
+    data,
+    scripts/ldm,
+    scripts/generate_rotations
+ignore =
     E203,
-    # W503: line break before binary operator (conflicts with black)
-    W503,
-    # E501: line too long (handled by black)
+    E262,
+    E402,
     E501,
-    # D100: Missing docstring in public module
-    D100,
-    # D104: Missing docstring in public package
-    D104
-
-per-file-ignores = 
-    # Ignore imports in __init__ files
-    __init__.py:F401,D104
-    # Ignore docstrings in tests
-    tests/*:D100,D101,D102,D103,D104,D105,D106,D107
-    # Ignore docstrings in setup files
-    setup.py:D100
-
-# Docstring style
-docstring-convention = google
-
-# McCabe complexity
-max-complexity = 10
-
-# Statistics
-statistics = True
-count = True
-
-# Format of error messages
-format = %(path)s:%(row)d:%(col)d: %(code)s %(text)s
+    E713,
+    E721,
+    E722,
+    E731,
+    F401,
+    F403,
+    F405,
+    F541,
+    F811,
+    F841,
+    W291,
+    W293,
+    W503

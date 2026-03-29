@@ -1,11 +1,11 @@
-import torch      
 from typing import List, Optional
 
-
+import torch
 
 """
 Helper functions for new types of inverse problems
 """
+
 
 def roll_one_dim(x: torch.Tensor, shift: int, dim: int) -> torch.Tensor:
     """
@@ -44,7 +44,7 @@ def roll(
     if len(shift) != len(dim):
         raise ValueError("len(shift) must match len(dim)")
 
-    for (s, d) in zip(shift, dim):
+    for s, d in zip(shift, dim):
         x = roll_one_dim(x, s, d)
 
     return x
@@ -145,46 +145,51 @@ def ifft2c_new(data: torch.Tensor, norm: str = "ortho") -> torch.Tensor:
 
     return data
 
+
 def fft2(x):
     """FFT with shifting DC to the center of the image"""
     return torch.fft.fftshift(torch.fft.fft2(x), dim=[-1, -2])
 
 
 def ifft2(x):
-    """ IFFT with shifting DC to the corner of the image prior to transform"""
+    """IFFT with shifting DC to the corner of the image prior to transform"""
     return torch.fft.ifft2(torch.fft.ifftshift(x, dim=[-1, -2]))
 
 
 def fft2_m(x):
-    """ FFT for multi-coil """
+    """FFT for multi-coil"""
     return torch.view_as_complex(fft2c_new(torch.view_as_real(x)))
 
 
 def ifft2_m(x):
-    """ IFFT for multi-coil """
+    """IFFT for multi-coil"""
     return torch.view_as_complex(ifft2c_new(torch.view_as_real(x)))
-    
-    
+
+
 img_shape = None
-mask = None 
-rho = None 
-lamb_1 = None 
+mask = None
+rho = None
+lamb_1 = None
 
 del_z = torch.zeros(img_shape)
 udel_z = torch.zeros(img_shape)
 eps = 1e-10
 
+
 def _A(x):
     return fft2(x) * mask
 
+
 def _AT(kspace):
     return torch.real(ifft2(kspace))
+
 
 def _Dz(x):  # Batch direction
     y = torch.zeros_like(x)
     y[:-1] = x[1:]
     y[-1] = x[0]
     return y - x
+
 
 def _DzT(x):  # Batch direction
     y = torch.zeros_like(x)
@@ -198,11 +203,14 @@ def _DzT(x):  # Batch direction
 
     return y
 
+
 def A_cg(x):
     return _AT(_A(x)) + rho * _DzT(_Dz(x))
 
+
 def shrink(src, lamb):
     return torch.sign(src) * torch.max(torch.abs(src) - lamb, torch.zeros_like(src))
+
 
 def CG(A_fn, b_cg, x, n_inner=10):
     r = b_cg - A_fn(x)
@@ -223,6 +231,7 @@ def CG(A_fn, b_cg, x, n_inner=10):
         rs_old = rs_new
     return x
 
+
 def CS_routine(x, ATy, niter=20):
     ###nonlocal del_z, udel_z
     if del_z.device != x.device:
@@ -237,6 +246,7 @@ def CS_routine(x, ATy, niter=20):
     x_mean = x
     return x, x_mean
 
+
 def get_update_fn(update_fn):
     def radon_update_fn(model, data, x, t):
         with torch.no_grad():
@@ -246,10 +256,12 @@ def get_update_fn(update_fn):
 
     return radon_update_fn
 
+
 def get_ADMM_TV_fn():
     def ADMM_TV_fn(x, measurement=None):
         with torch.no_grad():
             ATy = _AT(measurement)
             x, x_mean = CS_routine(x, ATy, niter=1)
             return x, x_mean
+
     return ADMM_TV_fn
