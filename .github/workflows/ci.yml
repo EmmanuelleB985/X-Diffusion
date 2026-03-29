@@ -17,8 +17,8 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install dev dependencies
-        run: pip install -r requirements-dev.txt
+      - name: Install linting tools
+        run: pip install flake8 black isort mypy
 
       - name: Check formatting with black
         run: black --check --diff scripts/ DXAtoMRI/
@@ -27,13 +27,10 @@ jobs:
         run: isort --check-only --diff --profile black scripts/ DXAtoMRI/
 
       - name: Lint with flake8
-        run: flake8 scripts/ DXAtoMRI/
+        run: flake8 .
 
       - name: Type check with mypy
         run: mypy scripts/ --ignore-missing-imports || true
-
-      - name: Lint with pylint
-        run: pylint scripts/ --disable=all --enable=E --fail-under=5.0 || true
 
   test:
     runs-on: ubuntu-latest
@@ -46,28 +43,13 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Cache pip packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements-dev.txt') }}
-          restore-keys: ${{ runner.os }}-pip-
-
       - name: Install dependencies
         run: |
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-          pip install -r requirements-dev.txt
+          pip install pytest pytest-cov pytest-timeout omegaconf numpy
 
-      - name: Run tests with coverage
-        run: pytest --cov=scripts --cov-report=xml -v || true
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          file: coverage.xml
-          fail_ci_if_error: false
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Run tests
+        run: pytest scripts/tests/ -v --tb=short --timeout=60
 
   docker:
     runs-on: ubuntu-latest
