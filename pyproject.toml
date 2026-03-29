@@ -8,6 +8,8 @@ markers = [
 
 [tool.black]
 target-version = ["py39"]
+extend-exclude = "scripts/ldm"
 
 [tool.isort]
 profile = "black"
+skip_glob = ["scripts/ldm/*"]
