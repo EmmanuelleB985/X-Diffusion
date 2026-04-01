@@ -3,7 +3,6 @@
 [![ArXiv](https://img.shields.io/badge/ArXiv-Paper-%3CCOLOR%3E.svg)](https://arxiv.org/abs/2404.19604)
 [![ProjectPage](https://img.shields.io/badge/Project_Page-blue)](https://emmanuelleb985.github.io/XDiffusion/)
 [![CI/CD](https://github.com/EmmanuelleB985/X-Diffusion/actions/workflows/ci.yml/badge.svg)](https://github.com/EmmanuelleB985/X-Diffusion/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/EmmanuelleB985/X-Diffusion/branch/main/graph/badge.svg)](https://codecov.io/gh/EmmanuelleB985/X-Diffusion)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Type Checked](https://img.shields.io/badge/type_checked-mypy-blue.svg)](http://mypy-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
